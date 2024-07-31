@@ -1,0 +1,36 @@
+{% extends "home.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>{{ title }}</h2>
+    
+    {% if profile %}
+    <div class="profile-card">
+        <div class="profile-header">
+            <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+            <h3>{{ profile.user.username }}</h3>
+        </div>
+        <div class="profile-details">
+            <div class="detail-row">
+                <span class="detail-label">First Name:</span>
+                <span class="detail-value">{{ profile.user.first_name }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Last Name:</span>
+                <span class="detail-value">{{ profile.user.last_name }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value">{{ profile.user.email }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Address:</span>
+                <span class="detail-value">{{ profile.address_line1 }}, {{ profile.city }}, {{ profile.state }}, {{ profile.pincode }}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No profile information available.</p>
+    {% endif %}
+</div>
+{% endblock content %}
